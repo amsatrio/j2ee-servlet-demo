@@ -15,7 +15,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.amsatrio.dto.HelloWorldDto;
 import io.github.amsatrio.dto.ResponseDto;
 import io.github.amsatrio.service.HelloWorldService;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @WebServlet("/api/hello")
 @RequestScoped
 public class HelloWorldServletApi extends HttpServlet {
@@ -28,6 +30,7 @@ public class HelloWorldServletApi extends HttpServlet {
             HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
+        log.info("doGet()");
 
         ResponseDto<Object> responseDto = new ResponseDto<>(HttpServletResponse.SC_OK, "success",
                 helloWorldService.find());
